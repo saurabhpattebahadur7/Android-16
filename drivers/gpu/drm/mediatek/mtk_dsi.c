@@ -2216,15 +2216,13 @@ static void mtk_output_dsi_enable(struct mtk_dsi *dsi,
 	mi_disp_notifier_call_chain(MI_DISP_DPMS_EVENT, &g_notify_data);
 	mi_disp_feature_event_notify(&event, (u8 *)&blank);
 #else
-	if (!ext->params->vdo_doze_enable) {
-		if (new_doze_state)
-			blank = MI_DISP_DPMS_LP1;
-		else
-			blank = MI_DISP_DPMS_ON;
-		g_notify_data.data = &blank;
-		g_notify_data.disp_id = MI_DISPLAY_PRIMARY;
-		mi_disp_notifier_call_chain(MI_DISP_DPMS_EVENT, &g_notify_data);
-	}
+	if (new_doze_state)
+		blank = MI_DISP_DPMS_LP1;
+	else
+		blank = MI_DISP_DPMS_ON;
+	g_notify_data.data = &blank;
+	g_notify_data.disp_id = MI_DISPLAY_PRIMARY;
+	mi_disp_notifier_call_chain(MI_DISP_DPMS_EVENT, &g_notify_data);
 #endif
 
 	DDPMSG("%s -\n", __func__);
