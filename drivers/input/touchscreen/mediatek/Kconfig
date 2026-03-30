@@ -149,8 +149,6 @@ config TOUCHSCREEN_HIMAX_CHIPSET_8789P1_8185P3
 	  To compile this dirver as a module, choose M here: the
 	  module will be called.
 
-source "drivers/input/touchscreen/mediatek/hxchipset_8789p1_8185p3/Kconfig"
-
 config TOUCHSCREEN_MTK_GT911
 	bool "GT911 for Mediatek package"
 	help
