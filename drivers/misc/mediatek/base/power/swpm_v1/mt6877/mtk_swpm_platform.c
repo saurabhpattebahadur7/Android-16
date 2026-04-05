@@ -874,6 +874,12 @@ static void swpm_idx_snap(void)
 
 static char idx_buf[POWER_INDEX_CHAR_SIZE] = { 0 };
 
+/* Global declaration of tracepoint structures for the linker */
+struct tracepoint __tracepoint_swpm_power;
+EXPORT_SYMBOL(__tracepoint_swpm_power);
+struct tracepoint __tracepoint_swpm_power_idx;
+EXPORT_SYMBOL(__tracepoint_swpm_power_idx);
+
 static void swpm_log_loop(unsigned long data)
 {
 	char buf[256] = {0};

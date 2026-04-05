@@ -29,6 +29,10 @@
 #include <trace/events/mtk_events.h>
 #include <linux/of.h>
 
+/* Global structure declaration for PPM */
+struct tracepoint __tracepoint_ppm_user_setting;
+EXPORT_SYMBOL(__tracepoint_ppm_user_setting);
+
 /*==============================================================*/
 /* Local Macros                                                 */
 /*==============================================================*/
