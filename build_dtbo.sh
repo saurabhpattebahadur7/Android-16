@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Compile script for kernel
+# compile script for dtbo.img
 #
 
 SECONDS=0
@@ -8,7 +8,7 @@ DATE=$(date '+%Y%m%d-%H%M')
 
 DEVICE="${1:-pissarro}"
 DEFCONFIG="${DEVICE}_defconfig"
-ZIPNAME="BrickedKernel-${DEVICE}-${DATE}.zip"
+ZIPNAME="DTBO-${DEVICE}-${DATE}.zip"
 
 echo -e "Building for: $DEVICE\n"
 
@@ -39,13 +39,13 @@ make -j$(nproc --all) O=out \
     LLVM=1 \
     LLVM_IAS=1 \
     KCFLAGS="-w" \
-    Image.gz
+    dtbo.img
 
-if [ -f "out/arch/arm64/boot/Image.gz" ]; then
-    echo -e "\nKernel compiled successfully! Image at out/arch/arm64/boot/Image.gz\n"
+if [ -f "out/arch/arm64/boot/dtbo.img" ]; then
+    echo -e "\nDTBO compiled successfully! dtbo.img at out/arch/arm64/boot/dtbo.img\n"
     
-    cp out/arch/arm64/boot/Image.gz AnyKernel3
-    cd AnyKernel3 && zip -r9 "../$ZIPNAME" . && cd ..
+    cp out/arch/arm64/boot/dtbo.img Flasher
+    cd Flasher && zip -r9 "../$ZIPNAME" . && cd ..
     echo "Zip package created: $ZIPNAME"
 else
     echo -e "\nCompilation failed!\n"

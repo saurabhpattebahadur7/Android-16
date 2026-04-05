@@ -1,0 +1,12 @@
+ui_print("Device checking");
+getprop("ro.boot.product.hardware.sku") == "pissarro" || getprop("ro.boot.product.hardware.sku") == "pissarroin" || getprop("ro.boot.product.hardware.sku") == "pissarroinpro" || getprop("ro.boot.product.hardware.sku") == "pissarropro" || getprop("ro.boot.product.hardware.sku") == "pissarropro_ds" || getprop("ro.boot.product.hardware.sku") == "pissarropro_ss" || abort("ERROR: Compatible devices: pissarro, pissarroin, pissarroinpro, pissarropro, pissarropro_ds, pissarropro_ss. Your device: " + getprop("ro.boot.product.hardware.sku"));
+
+ui_print("Flashing dtbo...");
+package_extract_file("dtbo.img", "/dev/block/bootdevice/by-name/dtbo_a");
+package_extract_file("dtbo.img", "/dev/block/bootdevice/by-name/dtbo_b");
+
+ui_print("=========================================");
+ui_print("Installation completed successfully!");
+ui_print("Device: " + getprop("ro.boot.product.hardware.sku"));
+ui_print("=========================================");
+set_progress(1.000000);
