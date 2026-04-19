@@ -22,8 +22,18 @@ if [ ! -d "$TC_DIR" ]; then
 fi
 export PATH="$TC_DIR/bin:$PATH"
 
+echo -e "\nCleaning up...\n"
+if [ -d "out" ]; then
+    echo "Found old 'out' folder, deleting..."
+    rm -rf out
+fi
+
+if [ -f "AnyKernel3/Image.gz" ]; then
+    echo "Found old image in AnyKernel3, deleting..."
+    rm -f AnyKernel3/Image.gz
+fi
+
 echo -e "\nDefconfig compilation\n"
-rm -rf out
 mkdir -p out
 make O=out ARCH=arm64 LLVM=1 LLVM_IAS=1 HOSTCC="clang" HOSTCXX="clang++" $DEFCONFIG
 
