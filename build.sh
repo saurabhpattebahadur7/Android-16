@@ -33,6 +33,13 @@ if [ -f "AnyKernel3/Image.gz" ]; then
     rm -f AnyKernel3/Image.gz
 fi
 
+if [ -f "KernelSU-Next" ]; then
+    echo "Found old KernelSU-Next, deleting..."
+    rm -f KernelSU-Next
+fi
+
+curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
+
 echo -e "\nDefconfig compilation\n"
 mkdir -p out
 make O=out ARCH=arm64 LLVM=1 LLVM_IAS=1 HOSTCC="clang" HOSTCXX="clang++" $DEFCONFIG
