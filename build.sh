@@ -8,7 +8,7 @@ DATE=$(date '+%Y%m%d-%H%M')
 
 DEVICE="${1:-pissarro}"
 DEFCONFIG="${DEVICE}_defconfig"
-ZIPNAME="BrickedKernel-${DEVICE}-${DATE}.zip"
+ZIPNAME="Bricked-bKSU-${DEVICE}-${DATE}.zip"
 
 echo -e "Building for: $DEVICE\n"
 
@@ -32,6 +32,13 @@ if [ -f "AnyKernel3/Image.gz" ]; then
     echo "Found old image in AnyKernel3, deleting..."
     rm -f AnyKernel3/Image.gz
 fi
+
+if [ -f "KernelSU" ]; then
+    echo "Found old KernelSU, deleting..."
+    rm -f KernelSU
+fi
+
+curl -LSs "https://raw.githubusercontent.com/StabilityBrickOS/KernelSU/refs/heads/main/kernel/setup.sh" | bash
 
 echo -e "\nDefconfig compilation\n"
 mkdir -p out
