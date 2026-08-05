@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=BrickedKernel by Stability
+kernel.string=RolexKernel by Rolex040623
 do.devicecheck=0
 do.modules=0
 do.systemless=1
