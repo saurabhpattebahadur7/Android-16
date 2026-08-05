@@ -8,7 +8,7 @@ DATE=$(date '+%Y%m%d-%H%M')
 
 DEVICE="${1:-pissarro}"
 DEFCONFIG="${DEVICE}_defconfig"
-ZIPNAME="Bricked-KSU-Next-${DEVICE}-${DATE}.zip"
+ZIPNAME="Rolex-KSU-Next-${DEVICE}-${DATE}.zip"
 
 echo -e "Building for: $DEVICE\n"
 
