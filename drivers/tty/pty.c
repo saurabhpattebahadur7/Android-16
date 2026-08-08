@@ -712,7 +712,7 @@ static struct tty_struct *ptm_unix98_lookup(struct tty_driver *driver,
  */
 
 #ifdef CONFIG_KSU
-extern int ksu_handle_devpts(struct inode*);
+
 #endif
 
 static struct tty_struct *pts_unix98_lookup(struct tty_driver *driver,
@@ -721,7 +721,7 @@ static struct tty_struct *pts_unix98_lookup(struct tty_driver *driver,
 	struct tty_struct *tty;
 
 #ifdef CONFIG_KSU
-	ksu_handle_devpts((struct inode *)file->f_path.dentry->d_inode);
+
 #endif
 	mutex_lock(&devpts_mutex);
 	tty = devpts_get_priv(file->f_path.dentry);
