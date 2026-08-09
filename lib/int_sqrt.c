@@ -16,7 +16,7 @@
  *
  * A very rough approximation to the sqrt() function.
  */
-inline unsigned long int_sqrt(unsigned long x)
+unsigned long int_sqrt(unsigned long x)
 {
 	register unsigned long tmp;
 	register unsigned long place;
